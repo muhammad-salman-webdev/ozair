@@ -20,13 +20,27 @@
   align-items: flex-start;
 }
 
-.title {
+.title-container {
   width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+.title-container h1 {
   font-size: 45px;
-  font-weight: 300;
-  font-style: italic;
-  font-family: "Outfit", sans-serif;
+}
+.title-container p {
+  font-size: 18px;
   font-family: system-ui;
+  font-style: italic;
+  font-weight: 300;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+.title-icon {
+  width: 40%;
+}
+.title-icon img {
+  width: 100%;
 }
 .chat-container {
   width: 55%;
@@ -95,7 +109,7 @@
   outline: none;
   padding: 0 0 0 15px;
   background: none;
-  font-size: 17px;
+  font-size: 16px;
 }
 .input-section input::placeholder {
   color: white;
@@ -132,7 +146,7 @@
   justify-content: center;
 }
 .img-item img.icon {
-  width: 50%;
+  width: 30%;
   height: auto;
   aspect-ratio: 1/1;
 }
@@ -141,12 +155,24 @@
     flex-direction: column;
     padding: 20px 30px;
   }
-  .title {
+  .title-container {
     width: 100%;
-    font-size: 25px;
   }
   .chat-container {
     width: 100%;
     margin: 20px 0 00 0;
+  }
+  .title-icon {
+    width: 10%;
+  }
+  .title-container p {
+    margin: 5 0 00 0;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .title-icon {
+    width: 20%;
   }
 }
