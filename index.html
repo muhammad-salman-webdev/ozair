@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Surveillant - PHMSA Historical Pipeline Incident Bot</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="title">
+        Surveillant - PHMSA Historical Pipeline Incident Bot
+      </div>
+
+      <div class="chat-container">
+        <div class="chat-box">
+          <div class="chat-conversation" id="chatbox">
+            <div class="message">
+              Hi! I'm Surveillant - PHMSA Historical Pipeline Incident Bot.
+              Query me anything!
+            </div>
+          </div>
+          <div class="input-section" id="userInput">
+            <input
+              type="text"
+              id="textInput"
+              placeholder="Enter message here..." />
+            <button id="askBtn">ASK</button>
+          </div>
+        </div>
+        <div class="img-container">
+          <div class="img-item"
+            ><img class="icon" src="images/icon1.png" alt=""
+          /></div>
+          <div class="img-item"
+            ><img class="icon" src="images/icon2.png" alt=""
+          /></div>
+
+          <!-- <div class="img-item">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6769.63643872072!2d74.2174816!3d31.965827899999997!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15ea2fb34831e757%3A0x4a7fea29efe15000!2sAlmu&#39;tarid%2C%20Taif%2026411%2C%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1680603244651!5m2!1sen!2s"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="img-item"><img src="images/img.png" alt="" /></div> -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  function getBotResponse() {
+    var image =
+      '<img src = "https://cdn.iconscout.com/icon/premium/png-256-thumb/ai-robot-5-1089411.png" alt = "Hello" width = "25">';
+    var rawText = $("#textInput").val();
+    var userHtml = `<div class="message"> ${rawText} </div>`;
+    $("#textInput").val("");
+    $("#chatbox").append(userHtml);
+    document
+      .getElementById("userInput")
+      .scrollIntoView({ block: "start", behavior: "smooth" });
+    $.get("/get", { msg: rawText }).done(function (data) {
+      var botHtml = image + '<p class="botText"><span>' + data + "</span></p>";
+
+      $("#chatbox").append(botHtml);
+      document
+        .getElementById("userInput")
+        .scrollIntoView({ block: "start", behavior: "smooth" });
+    });
+  }
+  var msgContainer = document.getElementById("chatbox");
+
+  $("#textInput").keypress(function (e) {
+    if (e.which == 13) {
+      getBotResponse();
+      msgContainer.scrollTop = msgContainer.scrollHeight;
+    }
+  });
+  $("#askBtn").click(function (e) {
+    getBotResponse();
+    msgContainer.scrollTop = msgContainer.scrollHeight;
+    $("#textInput").focus();
+  });
+</script>
