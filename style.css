@@ -25,6 +25,9 @@
   display: flex;
   justify-content: space-between;
 }
+.titles {
+  width: 80%;
+}
 .title-container h1 {
   font-size: 45px;
 }
@@ -36,8 +39,11 @@
   margin-right: 20px;
   margin-top: 30px;
 }
+.title-container p.sec-para {
+  margin-right: 0;
+}
 .title-icon {
-  width: 40%;
+  width: 20%;
 }
 .title-icon img {
   width: 100%;
@@ -91,7 +97,8 @@
   margin-right: auto;
   display: block;
   max-width: 80%;
-  font-weight: 200;
+  background: #be2121;
+  font-weight: bolder;
 }
 .chat-box .input-section {
   position: absolute;
@@ -174,5 +181,11 @@
 @media screen and (max-width: 600px) {
   .title-icon {
     width: 20%;
+  }
+  .title-container p {
+    margin: 10px 0 0 0;
+  }
+  .title-container h1 {
+    font-size: 30px;
   }
 }
